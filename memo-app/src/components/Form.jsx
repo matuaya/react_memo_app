@@ -1,6 +1,6 @@
 import { useRef } from "react";
 
-function Form({ memo, onSave, onDelete }) {
+function Form({ memo, onSave, onDelete, isAdding }) {
   const contentRef = useRef(memo ? memo.content : "");
 
   return (
@@ -11,11 +11,20 @@ function Form({ memo, onSave, onDelete }) {
         ref={contentRef}
       ></textarea>
       <div className="button-container">
-        <button className="save-button" onClick={onSave}>
-          更新
+        <button
+          className="save-button"
+          type="button"
+          onClick={() => {
+            const content = contentRef.current.value;
+            if (content) {
+              onSave(content);
+            }
+          }}
+        >
+          {isAdding ? "追加" : "更新"}
         </button>
-        <button className="delete-button" onClick={onDelete}>
-          削除
+        <button className="delete-button" type="button" onClick={onDelete}>
+          {isAdding ? "キャンセル" : "削除"}
         </button>
       </div>
     </form>

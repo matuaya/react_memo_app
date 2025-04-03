@@ -3,23 +3,55 @@ import MemoList from "./components/MemoList.jsx";
 import Form from "./components/Form.jsx";
 
 function App() {
-  const [memos, setMemos] = useState(initialMemos);
+  const [memos, setMemos] = useState([]);
   const [isAdding, setIsAdding] = useState(false);
-  const [id, setId] = useState(null);
-  const selectedMemo = memos.find((memo) => memo.id === id);
+  const [selectedId, setSelectedId] = useState(null);
+  const selectedMemo = memos.find((memo) => memo.id === selectedId);
 
   function handleClickMemo(id) {
-    setId(id);
+    setSelectedId(id);
   }
 
   function handleClickAdd() {
     setIsAdding(true);
-    setId(null);
+    setSelectedId(null);
   }
 
-  function handleSave() {}
+  function handleSave(content) {
+    const newId = crypto.randomUUID();
 
-  function handleDelete() {}
+    if (isAdding) {
+      setMemos([
+        ...memos,
+        {
+          id: newId,
+          content,
+        },
+      ]);
+    } else {
+      const modifiedMemos = memos.map((memo) =>
+        memo.id === selectedId
+          ? {
+              ...memo,
+              content,
+            }
+          : memo
+      );
+      setMemos(modifiedMemos);
+    }
+
+    setIsAdding(false);
+    setSelectedId(null);
+  }
+
+  function handleDelete() {
+    if (selectedId) {
+      setMemos(memos.filter((memo) => memo.id !== selectedId));
+    }
+
+    setIsAdding(false);
+    setSelectedId(null);
+  }
 
   return (
     <div className="wrapper">
@@ -28,22 +60,17 @@ function App() {
         onClickMemo={handleClickMemo}
         onClickAdd={handleClickAdd}
       />
-      {(isAdding || id) && (
+      {(isAdding || selectedId) && (
         <Form
-          key={id || "new"}
+          key={selectedId || "new"}
           memo={selectedMemo}
           onSave={handleSave}
           onDelete={handleDelete}
+          isAdding={isAdding}
         />
       )}
     </div>
   );
 }
-
-const initialMemos = [
-  { id: 1, content: "memo1 memo1 memo1 memo1 memo1 memo1 memo1 memo1" },
-  { id: 2, content: "memo2" },
-  { id: 3, content: "memo3" },
-];
 
 export default App;
