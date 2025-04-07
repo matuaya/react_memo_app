@@ -1,9 +1,10 @@
 import { useState } from "react";
 import MemoList from "./components/MemoList.jsx";
 import Form from "./components/Form.jsx";
+import useLocalStorage from "./hooks/useLocalStorage.jsx";
 
 function App() {
-  const [memos, setMemos] = useState([]);
+  const [memos, setMemos] = useLocalStorage("memo");
   const [isAdding, setIsAdding] = useState(false);
   const [selectedId, setSelectedId] = useState(null);
   const selectedMemo = memos.find((memo) => memo.id === selectedId);
