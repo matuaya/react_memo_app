@@ -15,7 +15,7 @@ function Form({ memo, onSave, onDelete, isAdding }) {
           className="save-button"
           type="button"
           onClick={() => {
-            const content = contentRef.current.value;
+            const content = contentRef.current.value.trim();
             if (content) {
               onSave(content);
             }
