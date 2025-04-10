@@ -22,7 +22,7 @@ export default function useMemos(isAdding, selectedId) {
               ...memo,
               content,
             }
-          : memo
+          : memo,
       );
       setMemos(modifiedMemos);
     }

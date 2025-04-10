@@ -9,7 +9,7 @@ function MemoApp() {
 
   const { memos, selectedMemo, saveMemo, deleteMemo } = useMemos(
     isAdding,
-    selectedId
+    selectedId,
   );
 
   function handleClickMemo(id) {
