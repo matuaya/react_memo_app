@@ -1,7 +1,7 @@
 import { useRef } from "react";
 
-function Form({ memo, onSave, onDelete, isAdding }) {
-  const contentRef = useRef(memo ? memo.content : "");
+function AddForm({ onSave, onDelete }) {
+  const contentRef = useRef("");
 
   return (
     <form className="form">
@@ -21,14 +21,14 @@ function Form({ memo, onSave, onDelete, isAdding }) {
             }
           }}
         >
-          {isAdding ? "追加" : "更新"}
+          追加
         </button>
         <button className="delete-button" type="button" onClick={onDelete}>
-          {isAdding ? "キャンセル" : "削除"}
+          キャンセル
         </button>
       </div>
     </form>
   );
 }
 
-export default Form;
+export default AddForm;

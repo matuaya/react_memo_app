@@ -1,6 +1,7 @@
 import { useState } from "react";
 import MemoList from "./MemoList.jsx";
-import Form from "./Form.jsx";
+import AddForm from "./AddForm.jsx";
+import EditForm from "./EditForm.jsx";
 import useMemos from "../hooks/useMemos.js";
 
 function MemoApp() {
@@ -43,15 +44,16 @@ function MemoApp() {
         onClickMemo={handleClickMemo}
         onClickAdd={handleClickAdd}
       />
-      {(isAdding || selectedId) && (
-        <Form
-          key={selectedId || "new"}
+      {isAdding ? (
+        <AddForm onSave={handleSave} onDelete={handleDelete} />
+      ) : selectedId ? (
+        <EditForm
+          key={selectedId}
           memo={selectedMemo}
           onSave={handleSave}
           onDelete={handleDelete}
-          isAdding={isAdding}
         />
-      )}
+      ) : null}
     </div>
   );
 }
