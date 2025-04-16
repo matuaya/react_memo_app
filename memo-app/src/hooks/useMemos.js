@@ -27,9 +27,9 @@ export default function useMemos(isAdding, selectedId) {
   }
 
   function deleteMemo() {
-    if (selectedId) {
-      setMemos(memos.filter((memo) => memo.id !== selectedId));
-    }
+    if (!selectedId) return;
+
+    setMemos(memos.filter((memo) => memo.id !== selectedId));
   }
 
   return { saveMemo, deleteMemo, memos, selectedMemo };
