@@ -5,13 +5,11 @@ export default function useMemos(isAdding, selectedId) {
   const selectedMemo = memos.find((memo) => memo.id === selectedId);
 
   function saveMemo(content) {
-    const newId = crypto.randomUUID();
-
     if (isAdding) {
       setMemos([
         ...memos,
         {
-          id: newId,
+          id: crypto.randomUUID(),
           content,
         },
       ]);
