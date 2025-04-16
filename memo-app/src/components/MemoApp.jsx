@@ -1,7 +1,7 @@
 import { useState } from "react";
 import MemoList from "./MemoList.jsx";
 import Form from "./Form.jsx";
-import useMemos from "../hooks/useMemos.jsx";
+import useMemos from "../hooks/useMemos.js";
 
 function MemoApp() {
   const [isAdding, setIsAdding] = useState(false);

@@ -1,4 +1,4 @@
-import useLocalStorage from "./useLocalStorage.jsx";
+import useLocalStorage from "./useLocalStorage.js";
 
 export default function useMemos(isAdding, selectedId) {
   const [memos, setMemos] = useLocalStorage("memo");
