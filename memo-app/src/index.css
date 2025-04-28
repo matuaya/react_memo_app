@@ -5,8 +5,24 @@
 
 .wrapper {
   display: flex;
+  flex-direction: column;
+}
+
+.container {
+  display: flex;
   gap: 15px;
   margin: 25px;
+}
+
+.nav {
+  text-align: right;
+}
+
+.login-button {
+  font-size: 1.2rem;
+  margin: 10px;
+  width: 100px;
+  height: 45px;
 }
 
 .form {
