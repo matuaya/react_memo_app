@@ -1,5 +1,5 @@
 import Memo from "./Memo.jsx";
-import { useLoginStatus } from "../contexts/useLoginStatus.js";
+import { useLoginStatus } from "../contexts/useLoginStatus.jsx";
 
 function MemoList({ memos, onClickAdd, onClickMemo }) {
   const { isLoggedIn } = useLoginStatus();

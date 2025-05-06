@@ -1,4 +1,4 @@
-import { useLoginStatus } from "../contexts/useLoginStatus.js";
+import { useLoginStatus } from "../contexts/useLoginStatus.jsx";
 
 function Nav() {
   const { isLoggedIn, handleLogin } = useLoginStatus();

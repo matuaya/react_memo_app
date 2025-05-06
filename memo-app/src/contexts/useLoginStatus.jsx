@@ -1,7 +1,8 @@
-import { useState } from "react";
-import { LoginStatusContext } from "./LoginStatusContext";
+import { useState, createContext, useContext } from "react";
 
-function LoginStatusProvider({ children }) {
+const LoginStatusContext = createContext(null);
+
+export function LoginStatusProvider({ children }) {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   function handleLogin() {
@@ -15,4 +16,6 @@ function LoginStatusProvider({ children }) {
   );
 }
 
-export default LoginStatusProvider;
+export function useLoginStatus() {
+  return useContext(LoginStatusContext);
+}

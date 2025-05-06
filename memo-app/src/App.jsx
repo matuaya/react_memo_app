@@ -1,6 +1,6 @@
 import MemoApp from "./components/MemoApp.jsx";
 import Nav from "./components/Nav.jsx";
-import LoginStatusProvider from "./contexts/LoginStatusProvider.jsx";
+import { LoginStatusProvider } from "./contexts/useLoginStatus.jsx";
 
 function App() {
   return (
