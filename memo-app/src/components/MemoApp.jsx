@@ -38,7 +38,7 @@ function MemoApp() {
   }
 
   return (
-    <div className="wrapper">
+    <div className="container">
       <MemoList
         memos={memos}
         onClickMemo={handleClickMemo}
