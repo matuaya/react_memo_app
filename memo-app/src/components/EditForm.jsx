@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import { useLoginStatus } from "../contexts/useLoginStatus.jsx";
+import { useLoginStatus } from "../hooks/useLoginStatus.jsx";
 
 function EditForm({ memo, onSave, onDelete }) {
   const { isLoggedIn } = useLoginStatus();
